@@ -21,7 +21,7 @@ DROP TABLE IF EXISTS programming_languages;
 DROP TABLE IF EXISTS frameworks;
 
 CREATE TABLE programming_languages (
-    id SERIAL PRIMARY KEY,
+    id UUID PRIMARY KEY,
     name VARCHAR NOT NULL,
     release_year SMALLINT,
     compiler compiler,
@@ -32,7 +32,7 @@ CREATE TABLE programming_languages (
 
 
 CREATE TABLE frameworks (
-    id SERIAL PRIMARY KEY,
+    id UUID PRIMARY KEY,
     name VARCHAR NOT NULL,
     release_year SMALLINT,
     usage usage,
@@ -41,4 +41,6 @@ CREATE TABLE frameworks (
     based_on INT,
     CONSTRAINT fk_frameworks_languages FOREIGN KEY (based_on) REFERENCES programming_languages(id)
 );
+
+CREATE EXTENSION IF NOT EXISTS "pgcrypto";
 );
